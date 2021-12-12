@@ -1,0 +1,33 @@
+USE [FoodAppDb]
+GO
+
+SET IDENTITY_INSERT [dbo].[Categories] ON 
+
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (1, N'Deals', N'combo.png')
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (2, N'Chicken Fried', N'chicken.png')
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (3, N'French Fries', N'french_fries.png')
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (4, N'Hamburger', N'hamburger.png')
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (5, N'Hot Dog', N'hot_dog.png')
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (6, N'Pizza', N'pizza.png')
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (7, N'Popcorn', N'popcorn.png')
+INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (8, N'Drinks', N'drink.png')
+
+SET IDENTITY_INSERT [dbo].[Categories] OFF
+SET IDENTITY_INSERT [dbo].[Products] ON 
+
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (1, N'Masala Fried Chicken', N'The vibrant flavor and color of this spicy, finger-licking-good fried chicken comes from an abundance of ground dried spices, so be sure to use the freshest ones you can find. If a jar has been sitting in your cabinet for more than six months, it’s probably time to re-up. Trust us, it’ll make all the difference in the world. This recipe is from Chintan Pandya, executive chef of Adda in New York.', N'chicken1.jpg', 8, 1, 2)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (2, N'Crispy Fried Chicken', N'Southern fried chicken is a dish consisting of chicken pieces that have been coated with seasoned flour or batter and pan-fried, deep fried, pressure fried, or air fried. The breading adds a crisp coating or crust to the exterior of the chicken while retaining juices in the meat.', N'chicken2.jpg', 5, 0, 2)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (3, N'Buttermilk Fried Chicken', N'Soaking chicken or other meats in buttermilk make the meat tender. While harsher acids like lemon juice or vinegar can tenderize, they can also dry out the meat. But soaking chicken in buttermilk helps the chicken stay juicy while tenderizing the meat.', N'chicken3.jpg', 10, 0, 2)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (4, N'Chicken Fried Steak With White Gravy', N'Chicken Fried Steak with Sawmill Gravy is a true Texas meal. Delicious cube steak in a crunchy, flavorful breading and delicious white gravy!', N'chicken4.jpg', 10, 1, 2)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (5, N'Keto Fried Chicken', N'To make a Keto Friendly fried chicken we skipped the flour and went for pork rinds and Parmesan. Almond flour helps adhere everything together as well for a perfectly crisp chicken.', N'chicken5.jpg', 6, 0, 2)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (7, N'French Fries', N'A thin strip of potato, usually cut 3 to 4 inches in length and about 1/4 to 3/8 inches square that are deep fried until they are golden brown and crisp textured on the outside while remaining white and soft on the inside', N'french_fries1.jpg', 5, 1, 3)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (8, N'Zinger Burger', N'Our simple, succulent 100% chicken breast Fillet burger, plus spine-tingling Zing. With regular fries and a regular drink.', N' hamburger1.jpg', 6, 1, 4)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (9, N'Hot Dog Bar', N'A hot dog is a food consisting of a grilled or steamed sausage served in the slit of a partially sliced bun. The term hot dog can also refer to the sausage itself.', N'hot_dog1.jpg', 7, 1, 5)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (10, N'Neapolitan Pizza', N'Also known as pizza Napolitana or Naples-style pizza, Neapolitan is a traditional type of pizza that originated in Naples, Italy. It features a thin crust and basic, but very fresh topping. This makes for a delicious, harmonized taste that melts on the palette without various different flavors competing with one another.', N'pizza1.jpg', 10, 1, 6)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (11, N'Popcorn', N'Popcorn is a variety of corn kernel which expands and puffs up when heated; the same names are also used to refer to the foodstuff produced by the expansion.', N'popcorn1.jpg', 4, 1, 7)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (12, N'Cocacola', N'Coca-Cola, or Coke, is a carbonated soft drink manufactured by The Coca-Cola Company.', N' drink1.jpg', 3, 1, 8)
+
+
+SET IDENTITY_INSERT [dbo].[Products] OFF
+
+GO
