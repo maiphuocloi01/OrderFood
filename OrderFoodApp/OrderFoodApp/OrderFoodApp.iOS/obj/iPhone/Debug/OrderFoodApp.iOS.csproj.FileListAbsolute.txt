@@ -1,8 +1,0 @@
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\optimized\
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\OrderFoodApp.iOS.csproj.AssemblyReference.cache
-C:\Users\maiph\source\repos\OrderFoodApp\OrderFoodApp\OrderFoodApp.iOS\obj\iPhone\Debug\OrderFoodApp.iOS.csproj.CoreCompileInputs.cache
