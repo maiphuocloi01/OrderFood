@@ -55,7 +55,14 @@ INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopular
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (27, N'Greek Pizza', N'the pizza is proofed and cooked in a metal pan rather than stretched to order and baked on the floor of the pizza oven. A shallow pan is used, unlike the deep pans used in Sicilian, Chicago, or Detroit-styled pizzas. Its crust is typically spongy, airy, and light, like focaccia but not as thick.', N'pizza5.jpg', 10, 0, 6)
 
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (28, N'Caramel Popcorn', N'Popcorn cover with a layer of caramelized sugar', N'popcorn2.jpg', 4, 0, 7)
+<<<<<<< HEAD
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (29, N'Cheese Popcorn', N'Popcorn cover with a layer of cheese dust', N'popcorn3.jpg', 4, 0, 7)
 
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (30, N'Pepsi', N'A cool and refreshing drink to complement any meal', N'drink2.jpg', 3, 0, 8)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (31, N'Fanta', N'Sweet and fruity with a class of Fanta', N'drink3.jpg', 3, 0, 8)
+=======
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (28, N'Cheese Popcorn', N'Popcorn cover with a layer of cheese dust', N'popcorn3.jpg', 4, 0, 7)
+
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (29, N'Pepsi', N'A cool and refreshing drink to complement any meal',N'drink2.jpg', 3, 0, 8)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (30, N'Fanta', N'Sweet and fruity with a class of Fanta',N'drink3.jpg', 3, 0, 8)
+>>>>>>> 479798077f469f5bee6291dad496bcebb94410ea
