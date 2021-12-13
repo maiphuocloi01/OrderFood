@@ -1,8 +1,3 @@
-OrderFoodApp/OrderFoodApp/OrderFoodApp.Android/obj
-OrderFoodApp/OrderFoodApp/OrderFoodApp.Android/bin
-FoodAPI/.vs
-OrderFoodApp/.vs
-OrderFoodApp/OrderFoodApp/OrderFoodApp.iOS/bin
-OrderFoodApp/OrderFoodApp/OrderFoodApp.iOS/obj
-OrderFoodApp/OrderFoodApp/OrderFoodApp/obj
-
+bin/
+obj/
+.vs/
