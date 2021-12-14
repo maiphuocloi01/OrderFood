@@ -1,5 +1,5 @@
 bin/
 obj/
 .vs/
-PublishProfiles/
 *.csproj.user
+FoodAPI/FoodAPI/Properties/PublishProfiles/IISProfile.pubxml.user
