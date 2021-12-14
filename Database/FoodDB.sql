@@ -137,3 +137,5 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[ShoppingCartItems] CHECK CONSTRAINT [FK_ShoppingCartItems_Products_ProductId]
 GO
+
+select * from ShoppingCartItems

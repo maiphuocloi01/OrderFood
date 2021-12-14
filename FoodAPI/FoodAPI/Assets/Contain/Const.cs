@@ -13,7 +13,7 @@ namespace FoodAPI.Assets.Contain
 {
     public class Const
     {
-        public static readonly string Domain = $"http://192.168.1.8/OrderFoodAPI/";
+        public static readonly string Domain = $"http://192.168.1.94/OrderFoodAPI/";
 
         public static readonly string ProductImagePath = Domain + @"Assets/Images/Product/";
         public static readonly string CategoryImagePath = Domain + @"Assets/Images/Category/";

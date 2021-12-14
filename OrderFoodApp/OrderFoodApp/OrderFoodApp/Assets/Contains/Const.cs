@@ -7,7 +7,7 @@ namespace OrderFoodApp.Assets.Contains
 {
     public class Const
     {
-        public static readonly string Domain = $"http://192.168.1.8/OrderFoodAPI/";//$"http://ipcuaban/OrderFoodAPI/";
+        public static readonly string Domain = $"http://192.168.1.94/OrderFoodAPI/";//$"http://ipcuaban/OrderFoodAPI/";
 
         public static readonly string LoginPath = Domain + @"Api/UserController/Login";
         public static readonly string RegisterPath = Domain + @"Api/UserController/Register";
