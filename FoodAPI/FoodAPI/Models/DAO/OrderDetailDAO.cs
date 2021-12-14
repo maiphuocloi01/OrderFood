@@ -35,6 +35,15 @@ namespace FoodAPI.Models.DAO
                 .Select(b => new OrderDetailDTO(b))
                 .ToList();
             resultList = resultList.FindAll(b => b.OrderId == ID);
+
+            //var orders = db.Orders.Where(order => order.Id == ID)
+            //.Include(order => order.OrderDetails);
+            //.ThenInclude(product => product.Product);
+            //return (await db.Orders
+            //                    .Where(order => order.Id == ID)
+            //                    .ToListAsync())
+            //                    .Include(order => order.OrderDetails)
+            //                    .ToList();
             return resultList;
         }
     }

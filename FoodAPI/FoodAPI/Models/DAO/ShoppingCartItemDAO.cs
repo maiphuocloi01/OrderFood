@@ -39,22 +39,28 @@ namespace FoodAPI.Models.DAO
             return resultList;
         }
 
-        public async Task<double> SubTotal(int userId)
+        public async Task<double> SubTotal(int ID)
         {
-            var subTotal = (from cart in db.ShoppingCartItems
-                            where cart.CustomerId == userId
-                            select cart.TotalAmount).Sum();
+            //var subTotal = (from cart in db.ShoppingCartItems
+            //                where cart.CustomerId == userId
+            //                select cart.TotalAmount).Sum();
 
-            return subTotal;
+            var sum1 = (await db.ShoppingCartItems
+                        .ToListAsync())
+                        .Where(p => p.CustomerId == ID)
+                        .Sum(p => p.TotalAmount);
+
+            return sum1;
         }
 
-        public async Task<int> TotalItems(int userId)
+        public async Task<int> TotalItems(int ID)
         {
-            var cartItems = (from cart in db.ShoppingCartItems
-                             where cart.CustomerId == userId
-                             select cart.Qty).Sum();
-
-            return cartItems;
+           
+            var sum2 = (await db.ShoppingCartItems
+                        .ToListAsync())
+                        .Where(p => p.CustomerId == ID)
+                        .Sum(p => p.Qty);
+            return sum2;
         }
 
         public async Task<int> AddShoppingCartItems(ShoppingCartItemDTO shoppingCartItemDTO)

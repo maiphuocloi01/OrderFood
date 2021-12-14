@@ -61,8 +61,9 @@ namespace OrderFoodApp.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            //var response = await ShoppingCartItemService.GetTotalCartItems(Preferences.Get("userId", 0));
-            //LblTotalItems.Text = response.totalItems.ToString();
+            var id = Preferences.Get("userId", 0);
+            var response = await ShoppingCartItemService.GetTotalCartItems(1);
+            LblTotalItems.Text = response.totalItems.ToString();
         }
 
         protected override void OnDisappearing()

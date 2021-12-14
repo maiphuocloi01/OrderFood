@@ -25,7 +25,7 @@ namespace FoodAPI.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> SubTotal(int ID)
         {
-            return Ok(await ShoppingCartItemDAO.Instance.SubTotal(ID));
+            return Ok(new { SubTotal = await ShoppingCartItemDAO.Instance.SubTotal(ID) });
         }
 
         [Route("Api/ShoppingCartItemController/TotalItems/{ID}")]
@@ -33,7 +33,7 @@ namespace FoodAPI.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> TotalItems(int ID)
         {
-            return Ok(await ShoppingCartItemDAO.Instance.TotalItems(ID));
+            return Ok(new { TotalItems = await ShoppingCartItemDAO.Instance.TotalItems(ID) });
         }
 
         [Route("Api/ShoppingCartItemController/AddShoppingCartItems")]

@@ -26,25 +26,28 @@
                 <StackLayout Margin="20">
                     <StackLayout Orientation="Horizontal">
                         <Label x:Name="LblName"
-                               TextColor="#80574D"
+                               TextColor="#00612C"
+                               FontAttributes="Bold"
                                HorizontalOptions="Start"
                                FontSize="Large" />
                         <StackLayout HorizontalOptions="EndAndExpand"
                                      Orientation="Horizontal">
                             <Label x:Name="LblPrice"
-                                   TextColor="#80574D"
+                                   TextColor="#00612C"
+                                   FontAttributes="Bold"
                                    FontSize="Large" />
                             <Label Text="$"
-                                   TextColor="#80574D"
+                                   TextColor="#00612C"
+                                   FontAttributes="Bold"
                                    FontSize="Large" />
                         </StackLayout>
                     </StackLayout>
                     <Label Text="Product Detail"
-                           TextColor="#B00905"
+                           TextColor="#00843C"
                            FontSize="Large"
                            Margin="0,10,0,0" />
                     <Label x:Name="LblDetail"
-                           TextColor="#80574D"
+                           TextColor="#000000"
                            FontSize="Body" />
                 </StackLayout>
                 <StackLayout Spacing="20"
@@ -60,8 +63,9 @@
                     </Image>
                     <Label x:Name="LblQty"
                            Text="1"
+                           FontAttributes="Bold"
                            FontSize="Large"
-                           TextColor="#80574D"
+                           TextColor="#00612C"
                            VerticalTextAlignment="Center" />
                     <Image HeightRequest="40"
                            Source="plus.png">
@@ -74,21 +78,21 @@
                     <StackLayout HorizontalOptions="FillAndExpand"
                                  Margin="30,0,0,10">
                         <Label Text="Total Price"
-                               TextColor="#B00905"
+                               TextColor="#00843C"
                                FontSize="Medium" />
                         <StackLayout Orientation="Horizontal">
                             <Label x:Name="LblTotalPrice"
-                                   TextColor="#80574D"
+                                   TextColor="#00612C"
                                    FontSize="Medium" />
                             <Label Text="$"
-                                   TextColor="#80574D"
+                                   TextColor="#00612C"
                                    FontSize="Medium" />
                         </StackLayout>
                     </StackLayout>
                     <Button x:Name="BtnAddToCart"
                             Text="Add To Cart"
                             HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#CE0B06"
+                            BackgroundColor="#00843C"
                             TextColor="White" 
                             Clicked="BtnAddToCart_Clicked"/>
                 </StackLayout>

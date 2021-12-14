@@ -35,7 +35,7 @@ namespace FoodAPI.Models.DTO
             IsOrderCompleted = order.IsOrderCompleted;
             UserId = order.UserId;
 
-            OrderDetails = order.OrderDetails.Select(orderdetail => new OrderDetailDTO(orderdetail)).ToList();
+            //OrderDetails = order.OrderDetails.Select(orderdetail => new OrderDetailDTO(orderdetail)).ToList();
         }
     }
 }

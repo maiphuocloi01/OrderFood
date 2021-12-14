@@ -52,8 +52,8 @@ namespace OrderFoodApp.Services
                     var jsonResult = await result.Content.ReadAsStringAsync();
                     var resultCustomer = JsonConvert.DeserializeObject<Login>(jsonResult);
 
-                    var userId = resultCustomer.user_Id;
-                    Preferences.Set("userId", resultCustomer.user_Id);
+                    //var userId = resultCustomer.Email;
+                    Preferences.Set("userId", resultCustomer.Id);
 
                     
                     return true;

@@ -22,18 +22,25 @@ namespace OrderFoodApp.Views
             OrderDetailCollection = new ObservableCollection<OrderDetail>();
             GetOrderDetail(orderId);
         }
-        private async void GetOrderDetail(int orderId)
+        private async void GetOrderDetail(int ID)
         {
-            var orders = await OrderService.GetOrderDetails(orderId);
-            var orderDetails = orders[0].orderDetails;
-            foreach (var item in orderDetails)
+            var orderDetails = await OrderService.GetOrderDetails(ID);
+            //var orderDetails = orders[0].orderDetails;
+            //foreach (var item in orderDetails)
+            //{
+            //    OrderDetailCollection.Add(item);
+            //}
+            double total = 0;
+            foreach (var order in orderDetails)
             {
-                OrderDetailCollection.Add(item);
+                OrderDetailCollection.Add(order);
+                total += order.totalAmount;
             }
 
             LvOrderDetail.ItemsSource = OrderDetailCollection;
 
-            LblTotalPrice.Text = orders[0].orderTotal + " $ ";
+            //LblTotalPrice.Text = orders[0].orderTotal + " $ ";
+            LblTotalPrice.Text = total + " $ ";
         }
 
         private void TapBack_Tapped(object sender, EventArgs e)

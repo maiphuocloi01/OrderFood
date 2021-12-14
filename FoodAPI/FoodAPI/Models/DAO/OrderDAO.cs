@@ -38,12 +38,29 @@ namespace FoodAPI.Models.DAO
                 Address = orderDTO.Address,
                 Phone = orderDTO.Phone,
                 OrderTotal = orderDTO.OrderTotal,
-                IsOrderCompleted = orderDTO.IsOrderCompleted,
+                IsOrderCompleted = false,
                 UserId = orderDTO.UserId
             };
             try
             {
                 db.Orders.Add(order);
+
+                var shoppingCartItems = db.ShoppingCartItems.Where(cart => cart.CustomerId == order.UserId);
+                foreach (var item in shoppingCartItems)
+                {
+                    var orderDetail = new OrderDetail()
+                    {
+                        Price = item.Price,
+                        TotalAmount = item.TotalAmount,
+                        Qty = item.Qty,
+                        ProductId = item.ProductId,
+                        OrderId = order.Id,
+                    };
+                    db.OrderDetails.Add(orderDetail);
+                }
+
+                await db.SaveChangesAsync();
+                db.ShoppingCartItems.RemoveRange(shoppingCartItems);
                 await db.SaveChangesAsync();
                 return order.Id;
             }

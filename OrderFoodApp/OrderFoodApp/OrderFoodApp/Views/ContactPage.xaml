@@ -21,7 +21,7 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Grid.Column="1"
-                       TextColor="#CE0B06"
+                       TextColor="#00843C"
                        Text="Contact Us"
                        FontSize="Large"
                        FontAttributes="Bold"
@@ -33,7 +33,7 @@
             <Button x:Name="BtnCall"
                     Margin="50"
                     Text="Call 36656656"
-                    BackgroundColor="#CE0B06"
+                    BackgroundColor="#00843C"
                     TextColor="White"
                     FontSize="Medium"
                     CornerRadius="25" 

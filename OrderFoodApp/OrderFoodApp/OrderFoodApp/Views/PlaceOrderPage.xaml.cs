@@ -23,11 +23,12 @@ namespace OrderFoodApp.Views
 
         private async void BtnPlaceOrder_Clicked(object sender, EventArgs e)
         {
+            var id = Preferences.Get("userId", 0);
             var order = new Order();
             order.fullName = EntName.Text;
             order.phone = EntPhone.Text;
             order.address = EntAddress.Text;
-            order.userId = Preferences.Get("userId", 0);
+            order.userId = 1;
             order.orderTotal = _totalPrice;
 
             var response = await OrderService.PlaceOrder(order);
