@@ -24,7 +24,7 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Grid.Column="1"
-                       TextColor="#CE0B06"
+                       TextColor="#00843C"
                        Text="PLACE ORDER"
                        FontSize="Large"
                        FontAttributes="Bold"
@@ -40,7 +40,7 @@
                            FontAttributes="Bold"
                            FontSize="Large"
                            HorizontalTextAlignment="Center"
-                           TextColor="#CE0B06" />
+                           TextColor="#00843C" />
                     <Entry Placeholder="Name"
                            PlaceholderColor="#80574D"
                            TextColor="#80574D"
@@ -60,7 +60,7 @@
                 </StackLayout>
             </Frame>
             <Button Text="Place My Order"
-                    BackgroundColor="#CE0B06"
+                    BackgroundColor="#00843C"
                     TextColor="White"
                     x:Name="BtnPlaceOrder" 
                     Clicked="BtnPlaceOrder_Clicked"/>

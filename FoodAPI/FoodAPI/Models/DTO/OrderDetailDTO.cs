@@ -30,6 +30,8 @@ namespace FoodAPI.Models.DTO
             TotalAmount = orderDetail.TotalAmount;
             OrderId = orderDetail.OrderId;
             ProductId = orderDetail.ProductId;
+
+            Product = orderDetail.Product;
         }
     }
 }

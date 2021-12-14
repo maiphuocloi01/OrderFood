@@ -26,13 +26,15 @@ namespace OrderFoodApp.Views
 
         private async void GetTotalPrice()
         {
-            var totalPrice = await ShoppingCartItemService.GetCartSubTotal(Preferences.Get("userId", 0));
+            var id = Preferences.Get("userId", 0);
+            var totalPrice = await ShoppingCartItemService.GetCartSubTotal(1);
             LblTotalPrice.Text = totalPrice.subTotal.ToString();
         }
 
         private async void GetShoppingCartItems()
         {
-            var shoppingCartItems = await ShoppingCartItemService.GetShoppingCartItems(Preferences.Get("userId", 0));
+            var id = Preferences.Get("userId", 0);
+            var shoppingCartItems = await ShoppingCartItemService.GetShoppingCartItems(1);
             foreach (var shoppingCart in shoppingCartItems)
             {
                 ShoppingCartCollection.Add(shoppingCart);
@@ -47,7 +49,8 @@ namespace OrderFoodApp.Views
 
         private async void TapClearCart_Tapped(object sender, EventArgs e)
         {
-            var response = await ShoppingCartItemService.ClearShoppingCart(Preferences.Get("userId", 0));
+            var id = Preferences.Get("userId", 0);
+            var response = await ShoppingCartItemService.ClearShoppingCart(1);
             if (response)
             {
                 await DisplayAlert("", "Your cart has been cleared", "Alright");
@@ -62,7 +65,8 @@ namespace OrderFoodApp.Views
 
         private void BtnProceed_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new PlaceOrderPage(Convert.ToDouble(LblTotalPrice.Text)));
+            var totalPrice1 = LblTotalPrice.Text;
+            Navigation.PushModalAsync(new PlaceOrderPage(Convert.ToDouble(totalPrice1)));
         }
     }
 }

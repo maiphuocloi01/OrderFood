@@ -22,7 +22,7 @@
                 </Image>
                 <Label x:Name="LblCategoryName"
                        Grid.Column="1"
-                       TextColor="#CE0B06"
+                       TextColor="#00843C"
                        FontSize="Large"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="Center" />
@@ -47,7 +47,7 @@
                                    Source="{Binding imageUrl}"/>
                             <Label TextColor="#000000"
                                    Text="{Binding name}"/>
-                            <Label TextColor="#B00905"
+                            <Label TextColor="#00843C"
                                    Text="{Binding price ,StringFormat='${0}'}"/>
                         </StackLayout>
                     </DataTemplate>

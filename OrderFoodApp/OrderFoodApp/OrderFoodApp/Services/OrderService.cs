@@ -36,14 +36,24 @@ namespace OrderFoodApp.Services
                     var convertString = Const.ConverToPathWithParameter(Const.PlaceOrder);
 
                     var myContent = JsonConvert.SerializeObject(order);
-                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-                    var byteContent = new ByteArrayContent(buffer);
 
-                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    var content = new StringContent(myContent, Encoding.UTF8, "application/json");
+                    //var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    //var byteContent = new ByteArrayContent(buffer);
 
-                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+                    //byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                    return JsonConvert.DeserializeObject<OrderResponse>(result);
+                    var result = await client.PostAsync(convertString, content);
+
+
+                    var jsonResult = await result.Content.ReadAsStringAsync();
+
+                    OrderResponse res = new OrderResponse()
+                    {
+                        orderId = Int32.Parse(jsonResult)
+                    };
+
+                    return res;
                 }
                 catch (Exception e)
                 {
@@ -53,7 +63,7 @@ namespace OrderFoodApp.Services
             }
         }
 
-        public static async Task<List<Order>> GetOrderDetails(int ID)
+        public static async Task<List<OrderDetail>> GetOrderDetails(int ID)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -61,7 +71,7 @@ namespace OrderFoodApp.Services
                 {
                     var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetOrderDetailByID, new object[] { ID }));
 
-                    var resultList = JsonConvert.DeserializeObject<List<Order>>(dataString);
+                    var resultList = JsonConvert.DeserializeObject<List<OrderDetail>>(dataString);
 
                     return resultList;
                 }
@@ -79,7 +89,7 @@ namespace OrderFoodApp.Services
             {
                 try
                 {
-                    var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetOrderDetailByID, new object[] { ID }));
+                    var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetOrdersByUserID, new object[] { ID }));
 
                     var resultList = JsonConvert.DeserializeObject<List<OrderByUser>>(dataString);
 

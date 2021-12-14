@@ -17,10 +17,11 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.Header>
                     <StackLayout>
-                        <Label Margin="15,170,15,0"
+                        <Label Margin="15,70,15,0"
                                Text="Our Menu"
                                TextColor="Black"
-                               FontSize="Medium" />
+                               FontAttributes="Bold"
+                               FontSize="Large" />
                         <CollectionView  x:Name="CvCategories"
                                          HeightRequest="130"
                                          SelectionMode="Single"
@@ -47,9 +48,10 @@
                                                            VerticalOptions="FillAndExpand"
                                                            Source="{Binding imageUrl}"/>
                                                 </Frame>
-                                                <Label TextColor="#B00905"
+                                                <Label TextColor="#00843C"
                                                        HorizontalTextAlignment="Center"
                                                        FontSize="Medium"
+                                                       FontAttributes="Bold"
                                                        Text="{Binding name}"/>
                                             </StackLayout>
                                         </Frame>
@@ -60,7 +62,8 @@
                         <Label Margin="15,15,15,0"
                                Text="Popular Products"
                                TextColor="Black"
-                               FontSize="Medium" />
+                               FontAttributes="Bold"
+                               FontSize="Large" />
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
@@ -69,13 +72,22 @@
                                      Padding="10"
                                      Margin="15,0,15,0"
                                      Orientation="Vertical">
-                            <Image Aspect="Fill"
-                                   HeightRequest="150"
-                                   WidthRequest="150"
-                                   Source="{Binding imageUrl}"/>
+                            <Frame Padding="0"
+                                   CornerRadius="5"
+                                    >
+                                <Image Aspect="Fill"
+                                       HeightRequest="150"
+                                       WidthRequest="150"
+                                       Source="{Binding imageUrl}"/>
+                            </Frame>
                             <Label TextColor="#000000"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   MaxLines="1"
                                    Text="{Binding name}"/>
-                            <Label TextColor="#B00905"
+                            <Label TextColor="#00843C"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
                                    Text="{Binding price ,StringFormat='${0}'}"/>
                         </StackLayout>
                     </DataTemplate>
@@ -98,7 +110,7 @@
                 </Grid.ColumnDefinitions>
                 <Image Grid.Row="0"
                        Grid.Column="0"
-                       Grid.RowSpan="4"
+                       Grid.RowSpan="2"
                        Grid.ColumnSpan="3"
                        Source="banner.png"
                        Aspect="Fill" />
@@ -107,7 +119,7 @@
                              Grid.Column="0"
                              Grid.ColumnSpan="3">
                     <Image HorizontalOptions="Start"
-                           Margin="20,20,0,0"
+                           Margin="20,0,0,10"
                            Source="menu.png"
                            HeightRequest="30">
                         <Image.GestureRecognizers>
@@ -115,7 +127,7 @@
                         </Image.GestureRecognizers>
                     </Image>
                     <Grid HorizontalOptions="EndAndExpand"
-                          Margin="0,0,20,0">
+                          Margin="0,0,20,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -152,14 +164,14 @@
                         </Grid.GestureRecognizers>
                     </Grid>
                 </StackLayout>
-                <Image Margin="0,15,0,0"
+                <!--<Image Margin="0,15,0,0"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
                        Source="kfc.png"
                        Aspect="AspectFit"
                        Grid.Row="0"
                        Grid.Column="1"
-                       Grid.RowSpan="3" />
+                       Grid.RowSpan="3" />-->
             </Grid>
             <Grid x:Name="GridOverlay"
                   IsVisible="False"
@@ -170,7 +182,7 @@
                 </Grid.ColumnDefinitions>
                 <StackLayout BackgroundColor="White"
                              x:Name="SlMenu">
-                    <Grid BackgroundColor="#CE0B06"
+                    <Grid BackgroundColor="#00843C"
                           HeightRequest="120">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="4*" />
@@ -198,7 +210,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="My Orders"
-                               TextColor="#80574D"
+                               TextColor="#00612C"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -213,7 +225,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="Cart"
-                               TextColor="#80574D"
+                               TextColor="#00612C"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -228,7 +240,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="Contact"
-                               TextColor="#80574D"
+                               TextColor="#00612C"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -243,7 +255,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="Logout"
-                               TextColor="#80574D"
+                               TextColor="#00612C"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
