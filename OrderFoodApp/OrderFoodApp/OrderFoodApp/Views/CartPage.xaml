@@ -47,29 +47,48 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Margin="20,10,20,10">
-                                <Label TextColor="#00843C"
-                                       FontSize="Medium"
-                                       Text="{Binding productName}"/>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label CharacterSpacing="1"
-                                           TextColor="#80574D"
-                                           FontSize="Medium"
-                                           Text="{Binding qty}"/>
-                                    <Label Text="X"
-                                           TextColor="#80574D"
-                                           FontSize="Medium" />
-                                    <Label CharacterSpacing="1"
-                                           TextColor="#80574D"
-                                           FontSize="Medium"
-                                           Text="{Binding price}"/>
-                                    <Label CharacterSpacing="1"
-                                           TextColor="#80574D"
-                                           FontSize="Medium"
-                                           HorizontalOptions="EndAndExpand"
-                                           Text="{Binding totalAmount ,StringFormat='{0}$'}"/>
+                            <Grid Margin="0,20,0,0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60"/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="{Binding image}" Aspect="AspectFit" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                                <Label Text="{Binding productName}" FontAttributes="Bold" Margin="20,0,0,0" FontSize="Medium" MaxLines="2" LineBreakMode="TailTruncation" Grid.Column="1" Grid.Row="0"/>
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                    <Label Text="{Binding totalAmount ,StringFormat='{0}$'}" Margin="20,0,0,0" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold"/>
                                 </StackLayout>
-                            </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                    <Image HeightRequest="40"
+                                           Source="minus.png">
+                                        <!--<Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="TapDecrement" Tapped="TapDecrement_Tapped"/>
+                                        </Image.GestureRecognizers>-->
+                                    </Image>
+                                    <Label Text="{Binding qty}" FontAttributes="Bold" FontSize="Large"/>
+                                    <Image HeightRequest="40"
+                                            Source="plus.png">
+                                        <!--<Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="TapIncrement" Tapped="TapIncrement_Tapped"/>
+                                        </Image.GestureRecognizers>-->
+                                    </Image>
+                                </StackLayout>
+                                <CheckBox Grid.Column="2" Grid.Row="0" Color="MediumPurple" HorizontalOptions="Center"/>
+                                <Image Grid.Column="2" Grid.Row="1" HeightRequest="40"
+                                        Source="close.png">
+                                    <!--<Image.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="TapDelete" Tapped="TapDelete_Tapped"/>
+                                    </Image.GestureRecognizers>-->
+                                </Image>
+
+                            </Grid>
+                            
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

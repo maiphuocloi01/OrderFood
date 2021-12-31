@@ -27,7 +27,7 @@ namespace FoodAPI.Models.DAO
             private set => instance = value;
         }
 
-        FoodAppDbEntities1 db = new FoodAppDbEntities1();
+        FoodAppDbEntities db = new FoodAppDbEntities();
 
         public async Task<List<UserDTO>> GetAllUser()
         {
@@ -89,6 +89,28 @@ namespace FoodAPI.Models.DAO
             catch (Exception e)
             {
                 return -1;
+                throw e;
+            }
+        }
+
+        public async Task<bool> UpdateUser(UserDTO userDTO)
+        {
+            var result = db.Users.SingleOrDefault(c => c.Id == userDTO.Id);
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(userDTO.Name))
+                    result.Name = userDTO.Name;
+                if (!string.IsNullOrWhiteSpace(userDTO.Password))
+                    result.Password = Const.CreateMD5(userDTO.Password);
+                if (!string.IsNullOrWhiteSpace(userDTO.Email))
+                    result.Email = userDTO.Email;
+
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
                 throw e;
             }
         }

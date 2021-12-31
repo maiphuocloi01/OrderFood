@@ -86,5 +86,73 @@ namespace OrderFoodApp.Services
             }
            
         }
+
+        public async Task<List<Product>> GetAllProduct()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllProduct);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
+
+                    //ProductList.Sort((p1, p2) => p2.DiscountPrice.CompareTo(p1.DiscountPrice));
+
+                    return ProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
+
+        public static async Task<List<Advertisement>> GetAllAdvertisement()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllAdvertisement);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var AdvertisementList = JsonConvert.DeserializeObject<List<Advertisement>>(dataString);
+
+                    return AdvertisementList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<List<Product>> GetProductBySearchText(string searchText)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllProduct);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
+
+                    ProductList = ProductList.FindAll(p => Const.ConvertToUnsign(p.name).IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
+                    p.name.IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
+
+                    return ProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
     }
 }

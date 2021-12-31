@@ -1,5 +1,7 @@
-﻿using FoodAPI.Models.DAO;
+﻿using FoodAPI.Assets.Contain;
+using FoodAPI.Models.DAO;
 using FoodAPI.Models.DTO;
+using FoodAPI.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +14,33 @@ namespace FoodAPI.Controllers
 {
     public class ShoppingCartItemController : ApiController
     {
+        FoodAppDbEntities db = new FoodAppDbEntities();
+
         [Route("Api/ShoppingCartItemController/GetAllShoppingCartItems/{ID}")]
         [AllowAnonymous]
         [HttpGet]
         public async Task<IHttpActionResult> GetAllShoppingCartItems(int ID)
         {
-            return Ok(await ShoppingCartItemDAO.Instance.GetAllShoppingCartItems(ID));
+            var user = db.ShoppingCartItems.Where(s => s.CustomerId == ID);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var shoppingCartItems = from s in db.ShoppingCartItems.Where(s => s.CustomerId == ID)
+                                    join p in db.Products on s.ProductId equals p.Id
+
+                                    select new
+                                    {
+                                        Id = s.Id,
+                                        Price = s.Price,
+                                        TotalAmount = s.TotalAmount,
+                                        Qty = s.Qty,
+                                        ProductName = p.Name,
+                                        Image = Const.ProductImagePath + p.ImageUrl,
+                                        Sumary = p.Detail
+                                    };
+            //return Ok(await ShoppingCartItemDAO.Instance.GetAllShoppingCartItems(ID));
+            return Ok(shoppingCartItems);
         }
 
         [Route("Api/ShoppingCartItemController/SubTotal/{ID}")]
@@ -50,6 +73,14 @@ namespace FoodAPI.Controllers
         public async Task<IHttpActionResult> DeleteCartItem(int ID)
         {
             return Ok(await ShoppingCartItemDAO.Instance.DeleteCartItem(ID));
+        }
+
+        [Route("Api/ShoppingCartItemController/DeleteCartItemByID/{ID}")]
+        [AllowAnonymous]
+        [HttpDelete]
+        public async Task<IHttpActionResult> DeleteCartItemByID(int ID)
+        {
+            return Ok(await ShoppingCartItemDAO.Instance.DeleteCartItemByID(ID));
         }
     }
 }

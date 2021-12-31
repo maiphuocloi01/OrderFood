@@ -17,14 +17,27 @@ namespace OrderFoodApp.Views
     {
         public ObservableCollection<PopularProduct> ProductsCollection;
         public ObservableCollection<Category> CategoriesCollection;
+        public ObservableCollection<Advertisement> Advertisements;
         public HomePage()
         {
             InitializeComponent();
             ProductsCollection = new ObservableCollection<PopularProduct>();
             CategoriesCollection = new ObservableCollection<Category>();
+            Advertisements = new ObservableCollection<Advertisement>();
+            LoadData();
             GetPopularProducts();
             GetCategories();
             LblUserName.Text = Preferences.Get("userName", string.Empty);
+        }
+
+        private async void LoadData()
+        {
+            var advertises = await ProductService.GetAllAdvertisement();
+            foreach (var advertise in advertises)
+            {
+                Advertisements.Add(advertise);
+            }
+            CarouselViewer.ItemsSource = Advertisements;
         }
 
         private async void GetCategories()
@@ -62,7 +75,7 @@ namespace OrderFoodApp.Views
         {
             base.OnAppearing();
             var id = Preferences.Get("userId", 0);
-            var response = await ShoppingCartItemService.GetTotalCartItems(1);
+            var response = await ShoppingCartItemService.GetTotalCartItems(id);
             LblTotalItems.Text = response.totalItems.ToString();
         }
 

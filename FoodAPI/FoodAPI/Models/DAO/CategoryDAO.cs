@@ -26,7 +26,7 @@ namespace FoodAPI.Models.DAO
             private set => instance = value;
         }
 
-        FoodAppDbEntities1 db = new FoodAppDbEntities1();
+        FoodAppDbEntities db = new FoodAppDbEntities();
 
         public async Task<List<CategoryDTO>> GetAllCategory()
         {

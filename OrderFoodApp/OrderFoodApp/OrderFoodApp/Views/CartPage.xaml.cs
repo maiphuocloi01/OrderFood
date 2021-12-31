@@ -27,14 +27,14 @@ namespace OrderFoodApp.Views
         private async void GetTotalPrice()
         {
             var id = Preferences.Get("userId", 0);
-            var totalPrice = await ShoppingCartItemService.GetCartSubTotal(1);
+            var totalPrice = await ShoppingCartItemService.GetCartSubTotal(id);
             LblTotalPrice.Text = totalPrice.subTotal.ToString();
         }
 
         private async void GetShoppingCartItems()
         {
             var id = Preferences.Get("userId", 0);
-            var shoppingCartItems = await ShoppingCartItemService.GetShoppingCartItems(1);
+            var shoppingCartItems = await ShoppingCartItemService.GetShoppingCartItems(id);
             foreach (var shoppingCart in shoppingCartItems)
             {
                 ShoppingCartCollection.Add(shoppingCart);
@@ -50,7 +50,7 @@ namespace OrderFoodApp.Views
         private async void TapClearCart_Tapped(object sender, EventArgs e)
         {
             var id = Preferences.Get("userId", 0);
-            var response = await ShoppingCartItemService.ClearShoppingCart(1);
+            var response = await ShoppingCartItemService.ClearShoppingCart(id);
             if (response)
             {
                 await DisplayAlert("", "Your cart has been cleared", "Alright");

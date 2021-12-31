@@ -27,5 +27,13 @@ namespace FoodAPI.Controllers
         {
             return Ok(await UserDAO.Instance.Register(userDTO));
         }
+
+        [Route("Api/CustomerController/UpdateUser")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> UpdateUser(UserDTO userDTO)
+        {
+            return Ok(await UserDAO.Instance.UpdateUser(userDTO));
+        }
     }
 }

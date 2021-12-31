@@ -13,10 +13,10 @@ namespace FoodAPI.Models.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FoodAppDbEntities1 : DbContext
+    public partial class FoodAppDbEntities : DbContext
     {
-        public FoodAppDbEntities1()
-            : base("name=FoodAppDbEntities1")
+        public FoodAppDbEntities()
+            : base("name=FoodAppDbEntities")
         {
         }
     
@@ -25,11 +25,13 @@ namespace FoodAPI.Models.EF
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Advertisement> Advertisements { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

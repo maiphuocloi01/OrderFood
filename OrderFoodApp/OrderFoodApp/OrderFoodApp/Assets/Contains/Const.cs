@@ -7,7 +7,7 @@ namespace OrderFoodApp.Assets.Contains
 {
     public class Const
     {
-        public static readonly string Domain = $"http://192.168.1.8/OrderFoodAPI/";//$"http://ipcuaban/OrderFoodAPI/";
+        public static readonly string Domain = $"http://192.168.1.9/OrderFoodAPI/";//$"http://ipcuaban/OrderFoodAPI/";
 
         public static readonly string LoginPath = Domain + @"Api/UserController/Login";
         public static readonly string RegisterPath = Domain + @"Api/UserController/Register";
@@ -21,6 +21,8 @@ namespace OrderFoodApp.Assets.Contains
         public static readonly string GetProductByID = Domain + @"Api/ProductController/GetProductByID/{ID}";
         public static readonly string GetProductByCategoryID = Domain + @"Api/ProductController/GetProductByCategoryID/{ID}";
         public static readonly string GetPopularProduct = Domain + @"Api/ProductController/GetPopularProduct";
+        public static readonly string GetAllAdvertisement = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
+        public static readonly string GetAllProduct = Domain + @"Api/ProductController/GetAllProduct";
 
         public static readonly string SubTotal = Domain + @"Api/ShoppingCartItemController/SubTotal/{ID}";
         public static readonly string TotalItems = Domain + @"Api/ShoppingCartItemController/TotalItems/{ID}";

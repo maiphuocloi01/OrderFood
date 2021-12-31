@@ -26,7 +26,7 @@ namespace OrderFoodApp.Views
         private async void GetOrderItems()
         {
             var id = Preferences.Get("userId", 0);
-            var orders = await OrderService.GetOrdersByUser(1);
+            var orders = await OrderService.GetOrdersByUser(id);
             foreach (var order in orders)
             {
                 OrdersCollection.Add(order);

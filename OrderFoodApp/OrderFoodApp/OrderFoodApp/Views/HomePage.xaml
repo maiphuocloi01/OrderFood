@@ -7,6 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="OrderFoodApp.Views.HomePage">
     <ContentPage.Content>
+
         <Grid>
             <CollectionView x:Name="CvProducts"
                             SelectionMode="Single"
@@ -17,7 +18,32 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.Header>
                     <StackLayout>
-                        <Label Margin="15,70,15,0"
+
+                        <SearchBar x:Name="MySearchBar" Margin="5,70,15,0" Placeholder="Search"></SearchBar>
+                        
+                        <CarouselView x:Name="CarouselViewer"
+                                  HeightRequest="250"
+                                  Margin="0,15,0,10"
+                                  TranslationY="0">
+                            <CarouselView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
+                            </CarouselView.ItemsLayout>
+
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame HasShadow="True"                                            
+                                           VerticalOptions="FillAndExpand"    
+                                           HorizontalOptions="FillAndExpand"
+                                           Scale="1.2">
+                                            <Image Source="{Binding Image}"
+                                               Aspect="AspectFill"/>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                        <Label Margin="15,10,15,0"
                                Text="Our Menu"
                                TextColor="Black"
                                FontAttributes="Bold"
@@ -272,5 +298,6 @@
                 </BoxView>
             </Grid>
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>

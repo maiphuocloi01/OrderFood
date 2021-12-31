@@ -26,18 +26,32 @@ namespace FoodAPI.Models.DAO
             private set => instance = value;
         }
 
-        FoodAppDbEntities1 db = new FoodAppDbEntities1();
+        FoodAppDbEntities db = new FoodAppDbEntities();
 
-        public async Task<List<ShoppingCartItemDTO>> GetAllShoppingCartItems(int userId)
-        {
+        //public async Task<List<ShoppingCartItemDTO>> GetAllShoppingCartItems(int userId)
+        //{
 
-            var resultList = (await db.ShoppingCartItems
-                .ToListAsync())
-                .Select(b => new ShoppingCartItemDTO(b))
-                .ToList();
-            resultList = resultList.FindAll(b => b.CustomerId == userId);
-            return resultList;
-        }
+        //    //var resultList = (await db.ShoppingCartItems
+        //    //    .ToListAsync())
+        //    //    .Select(b => new ShoppingCartItemDTO(b))
+        //    //    .ToList();
+        //    //resultList = resultList.FindAll(b => b.CustomerId == userId);
+        //    //return resultList;
+
+        //    var shoppingCartItems = from s in db.ShoppingCartItems.Where(s => s.CustomerId == userId)
+        //                            join p in db.Products on s.ProductId equals p.Id
+
+        //                            select new
+        //                            {
+        //                                Id = s.Id,
+        //                                Price = s.Price,
+        //                                TotalAmount = s.TotalAmount,
+        //                                Qty = s.Qty,
+        //                                ProductName = p.Name,
+
+        //                            };
+        //    return shoppingCartItems;
+        //}
 
         public async Task<double> SubTotal(int ID)
         {
@@ -102,9 +116,27 @@ namespace FoodAPI.Models.DAO
 
         }
 
-        public async Task<bool> DeleteCartItem(int ID)
+
+        public async Task<bool> DeleteCartItem(int userId)
         {
-            var shoppingCart = db.ShoppingCartItems.Where(s => s.CustomerId == ID);
+            var shoppingCart = db.ShoppingCartItems.Where(s => s.CustomerId == userId);
+
+            try
+            {
+                db.ShoppingCartItems.RemoveRange(shoppingCart);
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
+        public async Task<bool> DeleteCartItemByID(int ID)
+        {
+            var shoppingCart = db.ShoppingCartItems.Where(s => s.Id == ID);
 
             try
             {

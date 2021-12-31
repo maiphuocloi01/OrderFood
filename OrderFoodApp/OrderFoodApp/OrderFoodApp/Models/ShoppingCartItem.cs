@@ -11,5 +11,7 @@ namespace OrderFoodApp.Models
         public double totalAmount { get; set; }
         public int qty { get; set; }
         public string productName { get; set; }
+        public string image { get; set; }
+        public string sumary { get; set; }
     }
 }
