@@ -17,10 +17,6 @@ namespace OrderFoodApp.Views
         {
             InitializeComponent();
         }
-        private void TapBackArrow_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
 
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
@@ -36,6 +32,11 @@ namespace OrderFoodApp.Views
             {
                 await DisplayAlert("Oops", "Something went wrong", "Cancel");
             }
+        }
+
+        private async void BtnSignup_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new SignupPage());
         }
     }
 }

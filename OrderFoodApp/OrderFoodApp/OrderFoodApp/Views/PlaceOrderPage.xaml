@@ -42,19 +42,19 @@
                            HorizontalTextAlignment="Center"
                            TextColor="#00843C" />
                     <Entry Placeholder="Name"
-                           PlaceholderColor="#80574D"
-                           TextColor="#80574D"
+                           PlaceholderColor="#00843C"
+                           TextColor="#00612C"
                            x:Name="EntName"
                            Keyboard="Text" />
                     <Entry Placeholder="Phone"
-                           PlaceholderColor="#80574D"
-                           TextColor="#80574D"
+                           PlaceholderColor="#00843C"
+                           TextColor="#00612C"
                            x:Name="EntPhone"
                            Keyboard="Numeric" />
                     <Editor Placeholder="Address"
                             HeightRequest="100"
-                            PlaceholderColor="#80574D"
-                            TextColor="#80574D"
+                            PlaceholderColor="#00843C"
+                            TextColor="#00612C"
                             x:Name="EntAddress"
                             Keyboard="Default" />
                 </StackLayout>

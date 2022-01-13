@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OrderFoodApp.Views.EditProfilePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="backarrow.png"
+                       Grid.Column="0"
+                       HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Edit Profile"
+                       Grid.Column="1"
+                       TextColor="#00843C"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <ImageButton CornerRadius="100" HeightRequest="150" WidthRequest="150"
+                         BorderWidth="3" BorderColor="Black" BackgroundColor="Black"
+                         HorizontalOptions="End" Aspect="AspectFill" x:Name="TxtCustomerAvatar"
+                         TranslationX="20" Margin="0,20,0,0"
+                         Source="{Binding UserAvatar}"/>
+                <ImageButton CornerRadius="30" HeightRequest="40" WidthRequest="40" 
+                             BackgroundColor="Transparent" BorderWidth="1" BorderColor="Black"
+                         TranslationX="-20"
+                         HorizontalOptions="Start" VerticalOptions="EndAndExpand" 
+                         Source="camera1.png" Command="{Binding UploadAvatarCommand}"/>
+            </StackLayout>
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <StackLayout>
+                    <Label Text="Your name" Margin="30,50,30,0"
+               FontSize="18" TextColor="Black"></Label>
+                    <Entry Keyboard="Text" MaxLength="80" Margin="30,5,30,0"
+               TextColor="Black" FontSize="20" Placeholder="Change your name"
+                Text="{Binding UserName, Mode=TwoWay}"></Entry>
+                    <Label Text="Your email" Margin="30,20,30,0"
+               FontSize="18" TextColor="Black"></Label>
+                    <Entry Keyboard="Text" MaxLength="80" Margin="30,5,30,0"
+               TextColor="Black" FontSize="20" Placeholder="Change your email"
+                Text="{Binding UserEmail, Mode=TwoWay}"></Entry>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="Save" FontSize="20" TextTransform="None"
+                BackgroundColor="#00843C" TextColor="#FFFFFF"
+                VerticalOptions="EndAndExpand"
+                Margin="0,30,0,0"
+                Command="{Binding SaveInfoEdited}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

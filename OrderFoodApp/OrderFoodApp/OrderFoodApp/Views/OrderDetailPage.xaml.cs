@@ -47,5 +47,15 @@ namespace OrderFoodApp.Views
         {
             Navigation.PopModalAsync();
         }
+
+        private void LvOrderDetail_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedOrder = e.SelectedItem as OrderDetail;
+            if (selectedOrder != null)
+            {
+                Navigation.PushModalAsync(new ProductDetailPage(selectedOrder.productId));
+            }
+            ((ListView)sender).SelectedItem = null;
+        }
     }
 }

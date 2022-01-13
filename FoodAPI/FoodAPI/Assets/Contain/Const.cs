@@ -14,10 +14,12 @@ namespace FoodAPI.Assets.Contain
     public class Const
     {
         public static readonly string Domain = $"http://192.168.1.9/OrderFoodAPI/";
+        //public static readonly string Domain = $"http://phuocloi123.somee.com/";
 
         public static readonly string ProductImagePath = Domain + @"Assets/Images/Product/";
         public static readonly string CategoryImagePath = Domain + @"Assets/Images/Category/";
         public static readonly string AdvertisementImagePath = Domain + @"Assets/Images/Advertisement/";
+        public static readonly string UserImagePath = Domain + @"Assets/Images/User/";
 
         public static string CreateMD5(string input)
         {

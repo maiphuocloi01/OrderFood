@@ -3,7 +3,6 @@ GO
 
 SET IDENTITY_INSERT [dbo].[Categories] ON 
 
-INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (1, N'Deals', N'combo.png')
 INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (2, N'Chicken Fried', N'chicken.png')
 INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (3, N'Fries', N'french_fries.png')
 INSERT [dbo].[Categories] ([Id], [Name], [ImageUrl]) VALUES (4, N'Burgers', N'hamburger.png')
@@ -27,24 +26,17 @@ INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopular
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (11, N'Popcorn', N'Popcorn is a variety of corn kernel which expands and puffs up when heated; the same names are also used to refer to the foodstuff produced by the expansion.', N'popcorn1.jpg', 4, 1, 7)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (12, N'Cocacola', N'Coca-Cola, or Coke, is a carbonated soft drink manufactured by The Coca-Cola Company.', N' drink1.jpg', 3, 1, 8)
 
-
-SET IDENTITY_INSERT [dbo].[Products] OFF
-
-GO
-
-////////////////////////////////////////////////////////////
-
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (6, N'Crinkle-Cut Fries', N'This wavy cut is a result of two-step process that involves pushing pre-soaked potatoes lengthwise on a mandolin outfitted with a special cutter. Resulting in a product that is crisper, and perhaps tastier', N'french_fries2.jpg', 5, 1, 3)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (13, N'Matchstick Fries', N'It’s the matchstick shape and high temperature that helps them cook faster and get that golden brown crisp.', N'french_fries3.jpg', 5, 0, 3)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (14, N'Cheese Fries', N'A dish consisting of French fries covered in cheese, with the possible addition of various other toppings. Cheese fries are generally served as a lunch- or dinner-time meal. They can be found in fast-food locations, diners, and grills around the globe.', N'french_fries4.jpg', 5, 0, 3)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (15, N'Sweet Potato Fries', N'Fried sweet potato features in a variety of dishes and cuisines including the popular sweet potato fries, a variation of French fries using sweet potato instead of potato. Fried sweet potatoes are known as patates in Guinean cuisine, where they are more popular than potatoes and more commonly used to make fries.', N'french_fries5.jpg', 5, 0, 3)
 
-INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (16, N'Double CheeseBurger', N'Features two 100% pure beef burger patties seasoned with just a pinch of salt and pepper. It's topped with tangy pickles, chopped onions, ketchup, mustard and two slices of melty American cheese. ', N' hamburger2.jpg', 7, 0, 4)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (16, N'Double CheeseBurger', N'Features two 100% pure beef burger patties seasoned with just a pinch of salt and pepper. It is topped with tangy pickles, chopped onions, ketchup, mustard and two slices of melty American cheese. ', N' hamburger2.jpg', 7, 0, 4)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (17, N'Shrimp Burger', N'This easy shrimp burger brings together crispy shrimp patties and melted cheese wrapped around buttery brioche buns to give a burst of flavor in every bite.', N' hamburger3.jpg', 7, 0, 4)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (18, N'Double Hamburger', N'contains two beef patties, sauce, lettuce, cheese, pickles, and onions on a three-piece sesame seed bun.', N' hamburger4.jpg', 8, 1, 4)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (19, N'Fish Burger', N'This burger has fish sourced from sustainably managed fisheries, on melty American cheese and topped with creamy tartar sauce, all served on a soft, steamed bun.', N' hamburger5.jpg', 6, 0, 4)
 
-INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (20, N'Chicago-style Hot Dog', N'Started with a steamed poppy seed bun and an all-beef frankfurter. Then it's topped with yellow mustard, bright green relish, fresh chopped onions, juicy red tomato wedges, a kosher-style pickle spear, a couple of spicy sport peppers and finally, a dash of celery salt.', N'hot_dog2.jpg', 6, 0, 5)
+INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (20, N'Chicago-style Hot Dog', N'Started with a steamed poppy seed bun and an all-beef frankfurter. Then it is topped with yellow mustard, bright green relish, fresh chopped onions, juicy red tomato wedges, a kosher-style pickle spear, a couple of spicy sport peppers and finally, a dash of celery salt.', N'hot_dog2.jpg', 6, 0, 5)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (21, N'Completo', N' served with ingredients such as chopped tomatoes, avocados, mayonnaise, sauerkraut, salsa Americana, ají pepper and green sauce. It can be twice the size of an American hot dog.', N'hot_dog3.jpg', 6, 0, 5)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (22, N'Danger Dog', N'Bacon-wrapped grilled hot dogs topped with mustard, ketchup, mayo, grilled onions and peppers, fresh pico de gallo, and often topped with a grilled jalapeño pepper.', N'hot_dog4.jpg', 6, 0, 5)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (23, N'Bagel Dog', N'A simple yeast dough is wrapped around hot dogs. The dough wrapped dogs are then briefly dipped in boiling water, brushed with egg and then baked in the oven.', N'hot_dog5.jpg', 6, 0, 5)
@@ -59,3 +51,17 @@ INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopular
 
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (30, N'Pepsi', N'A cool and refreshing drink to complement any meal', N'drink2.jpg', 3, 0, 8)
 INSERT [dbo].[Products] ([Id], [Name], [Detail], [ImageUrl], [Price], [IsPopularProduct], [CategoryId]) VALUES (31, N'Fanta', N'Sweet and fruity with a class of Fanta', N'drink3.jpg', 3, 0, 8)
+
+
+SET IDENTITY_INSERT [dbo].[Products] OFF
+
+GO
+
+insert into Advertisement values('img01.jpg')
+insert into Advertisement values('img02.jpg')
+insert into Advertisement values('img03.jpg')
+go
+
+////////////////////////////////////////////////////////////
+
+

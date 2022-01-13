@@ -7,10 +7,13 @@ namespace OrderFoodApp.Assets.Contains
 {
     public class Const
     {
-        public static readonly string Domain = $"http://192.168.1.9/OrderFoodAPI/";//$"http://ipcuaban/OrderFoodAPI/";
+        public static readonly string Domain = $"http://192.168.1.9/OrderFoodAPI/";
 
         public static readonly string LoginPath = Domain + @"Api/UserController/Login";
         public static readonly string RegisterPath = Domain + @"Api/UserController/Register";
+        public static readonly string UpdateUser = Domain + @"Api/UserController/UpdateUser";
+        public static readonly string UploadImage = Domain + @"Api/UserController/UploadImage";
+        public static readonly string GetUserByID = Domain + @"Api/UserController/GetUserByID/{ID}";
 
         public static readonly string GetAllCategory = Domain + @"Api/CategoryController/GetAllCategory";
         
@@ -29,6 +32,8 @@ namespace OrderFoodApp.Assets.Contains
         public static readonly string GetAllShoppingCartItems = Domain + @"Api/ShoppingCartItemController/GetAllShoppingCartItems/{ID}";
         public static readonly string DeleteCartItem = Domain + @"Api/ShoppingCartItemController/DeleteCartItem/{ID}";
         public static readonly string AddShoppingCartItems = Domain + @"Api/ShoppingCartItemController/AddShoppingCartItems";
+        public static readonly string UpdateQuantity = Domain + @"Api/ShoppingCartItemController/UpdateQuantity/{ID}/{quantity}";
+        public static readonly string DeleteCartItemByID = Domain + @"Api/ShoppingCartItemController/DeleteCartItemByID/{ID}";
 
 
         public static string ConverToPathWithParameter(string path, object[] param = null)

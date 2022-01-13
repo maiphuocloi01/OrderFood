@@ -28,23 +28,23 @@ namespace FoodAPI.Models.DAO
 
         FoodAppDbEntities db = new FoodAppDbEntities();
 
-        public async Task<List<OrderDetailDTO>> GetOrderDetailByID(int ID)
+        public async Task<List<OrderDTO>> GetOrderDetailByID(int ID)
         {
-            var resultList = (await db.OrderDetails
+            var resultList = (await db.Orders
+                //.Where(order => order.Id == ID)
+                //.Include(co => co.OrderDetails.Select(emp => new OrderDetailDTO(emp)))
                 .ToListAsync())
-                .Select(b => new OrderDetailDTO(b))
+                .Select(b => new OrderDTO(b))
                 .ToList();
-            resultList = resultList.FindAll(b => b.OrderId == ID);
+            resultList = resultList.FindAll(b => b.Id == ID);
 
-            //var orders = db.Orders.Where(order => order.Id == ID)
-            //.Include(order => order.OrderDetails);
-            //.ThenInclude(product => product.Product);
-            //return (await db.Orders
-            //                    .Where(order => order.Id == ID)
-            //                    .ToListAsync())
-            //                    .Include(order => order.OrderDetails)
-            //                    .ToList();
             return resultList;
+            //var resultList = (await db.OrderDetails
+            //    .ToListAsync())
+            //    .Select(b => new OrderDetailDTO(b))
+            //    .ToList();
+            //resultList = resultList.FindAll(b => b.OrderId == ID);
+            //return resultList;
         }
     }
 }

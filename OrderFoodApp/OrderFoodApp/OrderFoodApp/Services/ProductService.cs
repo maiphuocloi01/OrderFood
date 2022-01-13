@@ -11,20 +11,7 @@ namespace OrderFoodApp.Services
 {
     public class ProductService
     {
-        private static ProductService instance;
-
-        public static ProductService Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new ProductService();
-                }
-                return instance;
-            }
-            private set => instance = value;
-        }
+       
 
         public static async Task<Product> GetProductById(int ID)
         {
@@ -87,7 +74,7 @@ namespace OrderFoodApp.Services
            
         }
 
-        public async Task<List<Product>> GetAllProduct()
+        public static async Task<List<Product>> GetAllProduct()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -131,7 +118,7 @@ namespace OrderFoodApp.Services
             }
         }
 
-        public async Task<List<Product>> GetProductBySearchText(string searchText)
+        public static async Task<List<Product>> GetProductBySearchText(string searchText)
         {
             using (HttpClient client = new HttpClient())
             {

@@ -70,7 +70,7 @@ namespace FoodAPI.Models.DAO
             {
                 var userWithSameEmail = await db.Users.SingleOrDefaultAsync(u => u.Email == userDTO.Email);
 
-                if (userWithSameEmail != null) return -1; //Emnail đã tồn tại -> Đăng ký thất bại
+                if (userWithSameEmail != null) return -1;
                 string passWord = Const.CreateMD5(userDTO.Password);
 
                 User user = new User()
@@ -79,7 +79,10 @@ namespace FoodAPI.Models.DAO
                     Password = passWord,
                     Email = userDTO.Email,
                     Role = "User"
+
                 };
+
+                user.Avatar = "default.png";
 
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
@@ -104,6 +107,8 @@ namespace FoodAPI.Models.DAO
                     result.Password = Const.CreateMD5(userDTO.Password);
                 if (!string.IsNullOrWhiteSpace(userDTO.Email))
                     result.Email = userDTO.Email;
+                if (!string.IsNullOrWhiteSpace(userDTO.Avatar))
+                    result.Avatar = userDTO.Avatar;
 
                 await db.SaveChangesAsync();
                 return true;
@@ -111,6 +116,24 @@ namespace FoodAPI.Models.DAO
             catch (Exception e)
             {
                 return false;
+                throw e;
+            }
+        }
+
+        public async Task<UserDTO> GetUserByID(int ID)
+        {
+            try
+            {
+                var user = await db.Users.SingleOrDefaultAsync(u => u.Id == ID);
+                if (user != null)
+                {
+                    return new UserDTO(user);
+                }
+                else return null;
+            }
+            catch (Exception e)
+            {
+                return null;
                 throw e;
             }
         }

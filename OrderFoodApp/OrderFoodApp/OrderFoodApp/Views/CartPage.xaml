@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              mc:Ignorable="d"
+             x:Name="MyCartPage"
              x:Class="OrderFoodApp.Views.CartPage">
     <ContentPage.Content>
         <StackLayout>
@@ -25,6 +27,7 @@
                        Text="Your Cart"
                        FontSize="Large"
                        FontAttributes="Bold"
+                       VerticalTextAlignment="Top"
                        HorizontalTextAlignment="Center" />
                 <Label Grid.Column="2"
                        TextColor="#00843C"
@@ -35,64 +38,69 @@
                        VerticalTextAlignment="End"
                        HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="TapClearCart" Tapped="TapClearCart_Tapped" />
+                        <TapGestureRecognizer x:Name="TapClearCart" Command="{Binding DeleteAllCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
-            <ListView x:Name="LvShoppingCart"
+            <!--<ListView x:Name="LvShoppingCart"
                       SelectionMode="None"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
                       SeparatorColor="#80574D">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Margin="0,20,0,0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60"/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="4*"/>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                        <ViewCell>-->
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <StackLayout BindableLayout.ItemsSource="{Binding CartProducts}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <!--<material:MaterialCard Padding="5" HasShadow="True" IsClickable="True" 
+                                                   ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyCartPage}}"
+                                                   ClickCommandParameter="{Binding .}">-->
+                                <Grid Margin="0,20,0,0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Image Source="{Binding image}" Aspect="AspectFit" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
-                                <Label Text="{Binding productName}" FontAttributes="Bold" Margin="20,0,0,0" FontSize="Medium" MaxLines="2" LineBreakMode="TailTruncation" Grid.Column="1" Grid.Row="0"/>
-                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-                                    <Label Text="{Binding totalAmount ,StringFormat='{0}$'}" Margin="20,0,0,0" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
-                                    <Image HeightRequest="40"
-                                           Source="minus.png">
-                                        <!--<Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="TapDecrement" Tapped="TapDecrement_Tapped"/>
-                                        </Image.GestureRecognizers>-->
-                                    </Image>
-                                    <Label Text="{Binding qty}" FontAttributes="Bold" FontSize="Large"/>
-                                    <Image HeightRequest="40"
-                                            Source="plus.png">
-                                        <!--<Image.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="TapIncrement" Tapped="TapIncrement_Tapped"/>
-                                        </Image.GestureRecognizers>-->
-                                    </Image>
-                                </StackLayout>
-                                <CheckBox Grid.Column="2" Grid.Row="0" Color="MediumPurple" HorizontalOptions="Center"/>
-                                <Image Grid.Column="2" Grid.Row="1" HeightRequest="40"
-                                        Source="close.png">
-                                    <!--<Image.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="TapDelete" Tapped="TapDelete_Tapped"/>
-                                    </Image.GestureRecognizers>-->
-                                </Image>
+                                    <Image Source="{Binding image}" Margin="10,0,0,0" Aspect="Fill" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                                    <Label Text="{Binding productName}" TextColor="Black" FontAttributes="Bold" Margin="20,0,20,0" FontSize="18" MaxLines="2" LineBreakMode="TailTruncation" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"/>
+                                    <StackLayout x:Name="stackTotalAmount" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                        <Label Text="{Binding TotalAmount}" Margin="20,0,0,0" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold"/>
+                                        <Label Text="$"
+                                        TextColor="#8c8c8c"
+                                        FontSize="Medium" />
+                                    </StackLayout>
+                                    <StackLayout x:Name="stackQty" Margin="20,0,0,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                        <ImageButton BackgroundColor="Transparent" HeightRequest="24" Command="{Binding BindingContext.DecreaseCommand, Source={x:Reference Name=MyCartPage}}" CommandParameter="{Binding .}"
+                                           Source="minus.png"/>
 
-                            </Grid>
-                            
-                        </ViewCell>
+                                        <Label Text="{Binding Qty}" VerticalOptions="Center" TextColor="#00843C" FontSize="20"/>
+                                        <ImageButton BackgroundColor="Transparent" HeightRequest="24" Command="{Binding BindingContext.IncreaseCommand, Source={x:Reference Name=MyCartPage}}" CommandParameter="{Binding .}"
+                                            Source="plus.png"/>
+
+                                    </StackLayout>
+
+                                    <ImageButton BackgroundColor="Transparent" Margin="0,0,10,0" Grid.Column="2" Grid.Row="1" HeightRequest="32" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Name=MyCartPage}}" CommandParameter="{Binding .}"
+                                        Source="close.png"/>
+
+                                </Grid>
+                            <!--</material:MaterialCard>-->
+                            <!--</ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
             <StackLayout Orientation="Horizontal"
                          VerticalOptions="EndAndExpand">
                 <StackLayout HorizontalOptions="FillAndExpand"
@@ -102,10 +110,11 @@
                            FontSize="Medium" />
                     <StackLayout Orientation="Horizontal">
                         <Label x:Name="LblTotalPrice"
-                               TextColor="#80574D"
+                               Text="{Binding TotalPrice}"
+                               FontAttributes="Bold"
                                FontSize="Medium" />
                         <Label Text="$"
-                               TextColor="#80574D"
+                               FontAttributes="Bold"
                                FontSize="Medium" />
                     </StackLayout>
                 </StackLayout>

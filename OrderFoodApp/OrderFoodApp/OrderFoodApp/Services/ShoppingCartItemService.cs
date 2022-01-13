@@ -12,20 +12,6 @@ namespace OrderFoodApp.Services
 {
     public class ShoppingCartItemService
     {
-        private static ShoppingCartItemService instance;
-
-        public static ShoppingCartItemService Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new ShoppingCartItemService();
-                }
-                return instance;
-            }
-            private set => instance = value;
-        }
 
         public static async Task<bool> AddItemsInCart(AddToCart addToCart)
         {
@@ -42,6 +28,34 @@ namespace OrderFoodApp.Services
                     byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                     var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var resultAdd = JsonConvert.DeserializeObject<bool>(result);
+
+                    return resultAdd;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
+
+        public static async Task<bool> UpdateQuantity(int ID, int quantity)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.UpdateQuantity, new object[] { ID, quantity});
+
+                    //var myContent = JsonConvert.SerializeObject(addToCart);
+                    //var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    //var byteContent = new ByteArrayContent(buffer);
+
+                    //byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, null).Result.Content.ReadAsStringAsync().Result;
 
                     var resultAdd = JsonConvert.DeserializeObject<bool>(result);
 
@@ -122,6 +136,28 @@ namespace OrderFoodApp.Services
                 try
                 {
                     var dataString = await client.DeleteAsync(Const.ConverToPathWithParameter(Const.DeleteCartItem, new object[] { ID }));
+
+                    //var totalCart = JsonConvert.DeserializeObject<TotalCartItem>(dataString);
+
+                    //return totalCart;
+
+                    if (!dataString.IsSuccessStatusCode) return false;
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static async Task<bool> ClearShoppingCartByID(int ID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var dataString = await client.DeleteAsync(Const.ConverToPathWithParameter(Const.DeleteCartItemByID, new object[] { ID }));
 
                     //var totalCart = JsonConvert.DeserializeObject<TotalCartItem>(dataString);
 

@@ -12,20 +12,6 @@ namespace OrderFoodApp.Services
 {
     public class OrderService
     {
-        private static OrderService instance;
-
-        public static OrderService Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new OrderService();
-                }
-                return instance;
-            }
-            private set => instance = value;
-        }
 
         public static async Task<OrderResponse> PlaceOrder(Order order)
         {

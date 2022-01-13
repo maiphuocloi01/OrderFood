@@ -12,8 +12,9 @@ namespace OrderFoodApp.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //this.SetStatusBarColor(Xamarin.Forms.Color.FromHex("#00843C").ToAndroid());
             base.OnCreate(savedInstanceState);
-
+            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 132, 60));
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

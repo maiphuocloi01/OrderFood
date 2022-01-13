@@ -11,7 +11,7 @@ namespace OrderFoodApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new SignupPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

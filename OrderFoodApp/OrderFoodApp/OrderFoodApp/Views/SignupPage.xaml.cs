@@ -19,6 +19,11 @@ namespace OrderFoodApp.Views
             InitializeComponent();
         }
 
+        private void TapBackArrow_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
         private async void BtnSignUp_Clicked(object sender, EventArgs e)
         {
             if (!EntPassword.Text.Equals(EntConfirmPassword.Text))
@@ -46,9 +51,5 @@ namespace OrderFoodApp.Views
             }
         }
 
-        private async void BtnLogin_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new LoginPage());
-        }
     }
 }

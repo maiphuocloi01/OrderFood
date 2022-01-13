@@ -11,20 +11,6 @@ namespace OrderFoodApp.Services
 {
     public class CategoryService
     {
-        private static CategoryService instance;
-
-        public static CategoryService Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new CategoryService();
-                }
-                return instance;
-            }
-            private set => instance = value;
-        }
 
         public static async Task<List<Category>> GetCategories()
         {

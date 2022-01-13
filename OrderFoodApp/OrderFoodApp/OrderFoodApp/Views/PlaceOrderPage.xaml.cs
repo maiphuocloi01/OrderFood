@@ -34,8 +34,10 @@ namespace OrderFoodApp.Views
             var response = await OrderService.PlaceOrder(order);
             if (response != null)
             {
-                await DisplayAlert("", "Your Order Id is " + response.orderId, "Alright");
+
+                await DisplayAlert("Success", "Your Order Id is " + response.orderId, "Alright");
                 Application.Current.MainPage = new NavigationPage(new HomePage());
+
             }
             else
             {

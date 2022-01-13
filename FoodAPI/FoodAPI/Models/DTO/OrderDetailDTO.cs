@@ -15,7 +15,7 @@ namespace FoodAPI.Models.DTO
         public int OrderId { get; set; }
         public Order Order { get; set; }
         public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public ProductDTO Product { get; set; }
 
         public OrderDetailDTO()
         {
@@ -31,7 +31,7 @@ namespace FoodAPI.Models.DTO
             OrderId = orderDetail.OrderId;
             ProductId = orderDetail.ProductId;
 
-            Product = orderDetail.Product;
+            //Product = orderDetail.Product;
         }
     }
 }

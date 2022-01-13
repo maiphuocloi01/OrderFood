@@ -35,6 +35,7 @@ namespace FoodAPI.Controllers
                                         Price = s.Price,
                                         TotalAmount = s.TotalAmount,
                                         Qty = s.Qty,
+                                        ProductId = p.Id,
                                         ProductName = p.Name,
                                         Image = Const.ProductImagePath + p.ImageUrl,
                                         Sumary = p.Detail
@@ -65,6 +66,14 @@ namespace FoodAPI.Controllers
         public async Task<IHttpActionResult> AddShoppingCartItems(ShoppingCartItemDTO ShoppingCartItemDTO)
         {
             return Ok(await ShoppingCartItemDAO.Instance.AddShoppingCartItems(ShoppingCartItemDTO));
+        }
+
+        [Route("Api/ShoppingCartItemController/UpdateQuantity/{ID}/{quantity}")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> UpdateQuantity(int ID, int quantity)
+        {
+            return Ok(await ShoppingCartItemDAO.Instance.UpdateQuantity(ID, quantity));
         }
 
         [Route("Api/ShoppingCartItemController/DeleteCartItem/{ID}")]

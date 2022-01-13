@@ -116,6 +116,25 @@ namespace FoodAPI.Models.DAO
 
         }
 
+        public async Task<bool> UpdateQuantity(int cartId, int quantity)
+        {
+            var result = db.ShoppingCartItems.SingleOrDefault(c => c.Id == cartId);
+            try
+            {
+                
+                result.Qty = quantity;
+                result.TotalAmount = quantity * result.Price;
+
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
 
         public async Task<bool> DeleteCartItem(int userId)
         {

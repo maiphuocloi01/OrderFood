@@ -1,4 +1,5 @@
-﻿using FoodAPI.Models.EF;
+﻿using FoodAPI.Assets.Contain;
+using FoodAPI.Models.EF;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace FoodAPI.Models.DTO
         public string Email { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
+        public string Avatar { get; set; }
         public ICollection<OrderDTO> Orders { get; set; }
 
         public UserDTO()
@@ -28,6 +30,7 @@ namespace FoodAPI.Models.DTO
             Email = user.Email;
             Password = user.Password;
             Role = user.Role;
+            Avatar = Const.UserImagePath + user.Avatar;
 
             Orders = user.Orders.Select(order => new OrderDTO(order)).ToList();
         }

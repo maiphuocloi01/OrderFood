@@ -1,5 +1,6 @@
 ﻿using OrderFoodApp.Models;
 using OrderFoodApp.Services;
+using OrderFoodApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,7 +28,13 @@ namespace OrderFoodApp.Views
             LoadData();
             GetPopularProducts();
             GetCategories();
-            LblUserName.Text = Preferences.Get("userName", string.Empty);
+            
+            BindingContext = new HomeViewModel();
+            Device.StartTimer(TimeSpan.FromSeconds(2), (Func<bool>)(() =>
+            {
+                CarouselViewer.Position = (CarouselViewer.Position + 1) % 3;
+                return true;
+            }));
         }
 
         private async void LoadData()
@@ -66,6 +73,12 @@ namespace OrderFoodApp.Views
             await SlMenu.TranslateTo(0, 0, 400, Easing.Linear);
         }
 
+        private async void TapSeeMore_Tapped(object sender, EventArgs e)
+        {
+            var resultList = await ProductService.GetAllProduct();
+            await Navigation.PushModalAsync(new SearchPage(new ObservableCollection<Product>(resultList)));
+        }
+
         private void TapCloseMenu_Tapped(object sender, EventArgs e)
         {
             CloseHamBurgerMenu();
@@ -77,6 +90,14 @@ namespace OrderFoodApp.Views
             var id = Preferences.Get("userId", 0);
             var response = await ShoppingCartItemService.GetTotalCartItems(id);
             LblTotalItems.Text = response.totalItems.ToString();
+
+            LblUserName.Text = Preferences.Get("userName", string.Empty);
+            imgAvt.Source = new UriImageSource
+            {
+                Uri = new Uri(Preferences.Get("userAvatar", string.Empty)),
+                //CachingEnabled = true,
+                //CacheValidity = new TimeSpan(5, 0, 0, 0)
+            };
         }
 
         protected override void OnDisappearing()
@@ -120,7 +141,7 @@ namespace OrderFoodApp.Views
 
         private void TapContact_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new ContactPage());
+            Navigation.PushModalAsync(new ProfilePage());
         }
 
         private void TapCart_Tapped(object sender, EventArgs e)
@@ -130,9 +151,7 @@ namespace OrderFoodApp.Views
 
         private void TapLogout_Tapped(object sender, EventArgs e)
         {
-            //Preferences.Set("accessToken", string.Empty);
-            //Preferences.Set("tokenExpirationTime", 0);
-            Application.Current.MainPage = new NavigationPage(new SignupPage());
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

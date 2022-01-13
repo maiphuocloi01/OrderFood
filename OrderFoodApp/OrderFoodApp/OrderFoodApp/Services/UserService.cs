@@ -13,20 +13,6 @@ namespace OrderFoodApp.Services
 {
     public class UserService
     {
-        private static UserService instance;
-
-        public static UserService Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new UserService();
-                }
-                return instance;
-            }
-            private set => instance = value;
-        }
 
         public static async Task<bool> Login(string userName, string passWord)
         {
@@ -54,8 +40,10 @@ namespace OrderFoodApp.Services
 
                     //var userId = resultCustomer.Email;
                     Preferences.Set("userId", resultCustomer.Id);
+                    Preferences.Set("userName", resultCustomer.Name);
+                    Preferences.Set("userAvatar", resultCustomer.Avatar);
 
-                    
+
                     return true;
                 }
                 catch (Exception e)
@@ -85,6 +73,74 @@ namespace OrderFoodApp.Services
                     var resultID = JsonConvert.DeserializeObject<bool>(result);
 
                     return resultID;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
+
+        public static async Task<User> GetUserByID(int ID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetUserByID, new object[] { ID }));
+
+                    var customer = JsonConvert.DeserializeObject<User>(dataString);
+
+                    return customer;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
+
+        public static async Task<HttpResponseMessage> UploadImage(byte[] ImageData, string ImageName)
+        {
+            if (ImageData != null && !string.IsNullOrEmpty(ImageName))
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.UploadImage);
+                    var requestContent = new MultipartFormDataContent();
+                    var imageContent = new ByteArrayContent(ImageData);
+                    imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                    requestContent.Add(imageContent, "image", ImageName);
+                    return await client.PostAsync(convertString, requestContent);
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static async Task<bool> UpdateUser(User user)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.UpdateUser);
+
+                    var myContent = JsonConvert.SerializeObject(user);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var resultBool = JsonConvert.DeserializeObject<bool>(result);
+
+                    return resultBool;
                 }
                 catch (Exception e)
                 {

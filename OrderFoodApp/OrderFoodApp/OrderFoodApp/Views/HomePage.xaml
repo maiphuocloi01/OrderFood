@@ -12,6 +12,7 @@
             <CollectionView x:Name="CvProducts"
                             SelectionMode="Single"
                             SelectionChanged="CvProducts_SelectionChanged">
+
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
                                      Span="2" />
@@ -19,11 +20,9 @@
                 <CollectionView.Header>
                     <StackLayout>
 
-                        <SearchBar x:Name="MySearchBar" Margin="5,70,15,0" Placeholder="Search"></SearchBar>
-                        
                         <CarouselView x:Name="CarouselViewer"
                                   HeightRequest="250"
-                                  Margin="0,15,0,10"
+                                  Margin="0,65,0,10"
                                   TranslationY="0">
                             <CarouselView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
@@ -37,15 +36,15 @@
                                            HorizontalOptions="FillAndExpand"
                                            Scale="1.2">
                                             <Image Source="{Binding Image}"
-                                               Aspect="AspectFill"/>
+                                               Aspect="Fill"/>
                                         </Frame>
                                     </StackLayout>
                                 </DataTemplate>
                             </CarouselView.ItemTemplate>
                         </CarouselView>
                         <Label Margin="15,10,15,0"
-                               Text="Our Menu"
-                               TextColor="Black"
+                               Text="Categories"
+                               TextColor="#00843C"
                                FontAttributes="Bold"
                                FontSize="Large" />
                         <CollectionView  x:Name="CvCategories"
@@ -74,7 +73,7 @@
                                                            VerticalOptions="FillAndExpand"
                                                            Source="{Binding imageUrl}"/>
                                                 </Frame>
-                                                <Label TextColor="#00843C"
+                                                <Label TextColor="Black"
                                                        HorizontalTextAlignment="Center"
                                                        FontSize="Medium"
                                                        FontAttributes="Bold"
@@ -85,11 +84,31 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                        <Label Margin="15,15,15,0"
-                               Text="Popular Products"
-                               TextColor="Black"
+                        <Grid Margin="0,5,0,0" >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3.3*"/>
+                                <ColumnDefinition Width="3.4*"/>
+                                <ColumnDefinition Width="3.3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Margin="15,15,15,0"
+                               Text="Top Sales" Grid.Column="0"
+                               TextColor="#00843C"
                                FontAttributes="Bold"
                                FontSize="Large" />
+
+                            <Label Margin="15,15,15,0"
+                               Text="See more" Grid.Column="2"
+                               HorizontalOptions="End"
+                               VerticalOptions="End"
+                               TextColor="#00843C"
+                               x:Name="LblSeeMore"
+                               FontSize="Medium" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapSeeMore" Tapped="TapSeeMore_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
@@ -118,7 +137,9 @@
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+
             </CollectionView>
+
             <Grid ColumnSpacing="0"
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="Start"
@@ -126,8 +147,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />
                     <RowDefinition Height="40" />
-                    <RowDefinition Height="60" />
-                    <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
@@ -141,19 +160,22 @@
                        Source="banner.png"
                        Aspect="Fill" />
                 <StackLayout Orientation="Horizontal"
-                             Grid.Row="1"
+                             Grid.Row="0"
                              Grid.Column="0"
+                             Grid.RowSpan="2"
                              Grid.ColumnSpan="3">
-                    <Image HorizontalOptions="Start"
-                           Margin="20,0,0,10"
+                    <Image HorizontalOptions="Center"
+                           Margin="15,0,0,0"
                            Source="menu.png"
-                           HeightRequest="30">
+                           HeightRequest="20" WidthRequest="20"
+                           VerticalOptions="Center"
+                           >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="ImgMenu" Tapped="ImgMenu_Tapped" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Grid HorizontalOptions="EndAndExpand"
-                          Margin="0,0,20,10">
+                          Margin="0,0,10,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -166,12 +188,13 @@
                         <Image VerticalOptions="Center"
                                HorizontalOptions="Center"
                                Source="cart.png"
+                               HeightRequest="20" WidthRequest="20"
                                Grid.Row="1"
                                Grid.Column="0"
                                Grid.RowSpan="2"
                                Grid.ColumnSpan="2" />
                         <Frame Padding="1"
-                               CornerRadius="55"
+                               CornerRadius="85"
                                VerticalOptions="End"
                                HorizontalOptions="Start"
                                Grid.Row="0"
@@ -198,6 +221,21 @@
                        Grid.Row="0"
                        Grid.Column="1"
                        Grid.RowSpan="3" />-->
+                <Frame HasShadow="True"
+                           IsClippedToBounds="True" 
+                           Margin="10,10,20,10"
+                           HeightRequest="40"
+                           WidthRequest="100"
+                           CornerRadius="10"
+                           Padding="0"
+                           Opacity="0.9"
+                           x:Name="entrySearch"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Grid.RowSpan="2"
+                           >
+                    <SearchBar x:Name="MySearchBar" Margin="0,0,5,0" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference MySearchBar}}" Placeholder="Search"></SearchBar>
+                </Frame>
             </Grid>
             <Grid x:Name="GridOverlay"
                   IsVisible="False"
@@ -211,13 +249,27 @@
                     <Grid BackgroundColor="#00843C"
                           HeightRequest="120">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*" />
                             <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="6*" />
+                            <ColumnDefinition Width="5.8*" />
                         </Grid.ColumnDefinitions>
-                        <Image Source="kfc.png"
-                               Margin="5"
-                               VerticalOptions="Center" />
-                        <StackLayout Grid.Column="1"
+                        <Frame 
+                            Grid.Column="1"
+                            Padding="0"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center"
+                            CornerRadius="100"
+                            IsClippedToBounds="True"
+                            HeightRequest="100"
+                            WidthRequest="100">
+                            <Image Source="kfc.png"
+                               x:Name="imgAvt"
+                               Aspect="AspectFill"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand" >
+                            </Image>
+                        </Frame>
+                        <StackLayout Grid.Column="2"
                                      VerticalOptions="Center"
                                      Spacing="0"
                                      Margin="15,0,15,0">
@@ -225,14 +277,15 @@
                                    FontSize="Large"
                                    TextColor="White" />
                             <Label x:Name="LblUserName"
-                                   FontSize="Small"
+                                   FontSize="Large"
+                                   Margin="15,0,0,0"
                                    TextColor="White" />
                         </StackLayout>
                     </Grid>
                     <StackLayout Spacing="30"
                                  Orientation="Horizontal"
                                  Margin="20,0,0,0">
-                        <Image Source="order.png"
+                        <Image Source="bill1.png"
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="My Orders"
@@ -247,7 +300,7 @@
                     <StackLayout Spacing="30"
                                  Orientation="Horizontal"
                                  Margin="20,0,0,0">
-                        <Image Source="shopping_cart.png"
+                        <Image Source="cart1.png"
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="Cart"
@@ -262,10 +315,10 @@
                     <StackLayout Spacing="30"
                                  Orientation="Horizontal"
                                  Margin="20,0,0,0">
-                        <Image Source="contact.png"
+                        <Image Source="user1.png"
                                HeightRequest="30"
                                WidthRequest="30" />
-                        <Label Text="Contact"
+                        <Label Text="Profile"
                                TextColor="#00612C"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
@@ -277,7 +330,7 @@
                     <StackLayout Spacing="30"
                                  Orientation="Horizontal"
                                  Margin="20,0,0,0">
-                        <Image Source="logout.png"
+                        <Image Source="logout1.png"
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="Logout"

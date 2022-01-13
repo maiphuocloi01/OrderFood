@@ -1,5 +1,6 @@
 ﻿using OrderFoodApp.Models;
 using OrderFoodApp.Services;
+using OrderFoodApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,7 @@ namespace OrderFoodApp.Views
     public partial class ProductListPage : ContentPage
     {
         public ObservableCollection<ProductByCategory> ProductByCategoryCollection;
+        
         public ProductListPage(int categoryId, string categoryName)
         {
             InitializeComponent();
@@ -33,6 +35,8 @@ namespace OrderFoodApp.Views
             }
             CvProducts.ItemsSource = ProductByCategoryCollection;
         }
+
+        
 
         private void TapBack_Tapped(object sender, EventArgs e)
         {
